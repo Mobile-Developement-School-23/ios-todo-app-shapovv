@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  todo
-//
-//  Created by Артём Шаповалов on 01.07.2023.
-//
-
 import UIKit
 
 @main
@@ -33,4 +26,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

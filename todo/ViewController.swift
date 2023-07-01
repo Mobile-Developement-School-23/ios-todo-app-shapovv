@@ -1,19 +1,19 @@
-//
-//  ViewController.swift
-//  todo
-//
-//  Created by Артём Шаповалов on 01.07.2023.
-//
 
 import UIKit
 
 class ViewController: UIViewController {
 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
+        let myViewController = MyViewController()
+        addChild(myViewController)
+        myViewController.view.frame = view.bounds
+        view.addSubview(myViewController.view)
+        myViewController.didMove(toParent: self)
     }
-
-
 }
 
