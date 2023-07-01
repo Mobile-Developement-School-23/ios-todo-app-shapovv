@@ -13,17 +13,17 @@
 		FAE9169B2A4FD9E9003553D6 /* todoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9169A2A4FD9E9003553D6 /* todoTests.swift */; };
 		FAE916A52A4FD9E9003553D6 /* todoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916A42A4FD9E9003553D6 /* todoUITests.swift */; };
 		FAE916A72A4FD9E9003553D6 /* todoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916A62A4FD9E9003553D6 /* todoUITestsLaunchTests.swift */; };
-		FAE916CC2A4FE152003553D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916C02A4FE152003553D6 /* AppDelegate.swift */; };
-		FAE916CD2A4FE152003553D6 /* ListOfTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916C12A4FE152003553D6 /* ListOfTasksViewController.swift */; };
-		FAE916CE2A4FE152003553D6 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916C22A4FE152003553D6 /* MyViewController.swift */; };
-		FAE916CF2A4FE152003553D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916C32A4FE152003553D6 /* ViewController.swift */; };
-		FAE916D02A4FE152003553D6 /* AddTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916C42A4FE152003553D6 /* AddTaskCell.swift */; };
-		FAE916D12A4FE152003553D6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916C52A4FE152003553D6 /* CustomTableViewCell.swift */; };
-		FAE916D22A4FE152003553D6 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916C62A4FE152003553D6 /* FileCache.swift */; };
-		FAE916D32A4FE152003553D6 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916C72A4FE152003553D6 /* TaskViewController.swift */; };
-		FAE916D42A4FE152003553D6 /* StatusSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916C82A4FE152003553D6 /* StatusSelection.swift */; };
-		FAE916D52A4FE152003553D6 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916C92A4FE152003553D6 /* TodoItem.swift */; };
-		FAE916D72A4FE152003553D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916CB2A4FE152003553D6 /* SceneDelegate.swift */; };
+		FAE916D92A4FE5BD003553D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916D82A4FE5BD003553D6 /* ViewController.swift */; };
+		FAE916DB2A4FE5EC003553D6 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916DA2A4FE5EC003553D6 /* TodoItem.swift */; };
+		FAE916DD2A4FE60E003553D6 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916DC2A4FE60E003553D6 /* TaskViewController.swift */; };
+		FAE916DF2A4FE62C003553D6 /* StatusSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916DE2A4FE62C003553D6 /* StatusSelection.swift */; };
+		FAE916E12A4FE647003553D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916E02A4FE647003553D6 /* SceneDelegate.swift */; };
+		FAE916E32A4FE661003553D6 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916E22A4FE661003553D6 /* MyViewController.swift */; };
+		FAE916E52A4FE68B003553D6 /* ListOfTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916E42A4FE68B003553D6 /* ListOfTasksViewController.swift */; };
+		FAE916E72A4FE6A4003553D6 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916E62A4FE6A4003553D6 /* FileCache.swift */; };
+		FAE916E92A4FE6C8003553D6 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916E82A4FE6C8003553D6 /* CustomTableViewCell.swift */; };
+		FAE916EB2A4FE6E4003553D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916EA2A4FE6E4003553D6 /* AppDelegate.swift */; };
+		FAE916ED2A4FE70B003553D6 /* AddTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE916EC2A4FE70B003553D6 /* AddTaskCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,17 +55,17 @@
 		FAE916A42A4FD9E9003553D6 /* todoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todoUITests.swift; sourceTree = "<group>"; };
 		FAE916A62A4FD9E9003553D6 /* todoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FAE916BF2A4FE151003553D6 /* todo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "todo-Bridging-Header.h"; sourceTree = "<group>"; };
-		FAE916C02A4FE152003553D6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/AppDelegate.swift"; sourceTree = "<group>"; };
-		FAE916C12A4FE152003553D6 /* ListOfTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListOfTasksViewController.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/ListOfTasksViewController.swift"; sourceTree = "<group>"; };
-		FAE916C22A4FE152003553D6 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyViewController.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/MainScreen/MyViewController.swift"; sourceTree = "<group>"; };
-		FAE916C32A4FE152003553D6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/ViewController.swift"; sourceTree = "<group>"; };
-		FAE916C42A4FE152003553D6 /* AddTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddTaskCell.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/AddTaskCell.swift"; sourceTree = "<group>"; };
-		FAE916C52A4FE152003553D6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/CustomTableViewCell.swift"; sourceTree = "<group>"; };
-		FAE916C62A4FE152003553D6 /* FileCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileCache.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/FileCache.swift"; sourceTree = "<group>"; };
-		FAE916C72A4FE152003553D6 /* TaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskViewController.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/MainScreen/TaskViewController.swift"; sourceTree = "<group>"; };
-		FAE916C82A4FE152003553D6 /* StatusSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusSelection.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/MainScreen/StatusSelection.swift"; sourceTree = "<group>"; };
-		FAE916C92A4FE152003553D6 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoItem.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/TodoItem.swift"; sourceTree = "<group>"; };
-		FAE916CB2A4FE152003553D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = "../../../../Downloads/swift 3/ios-todo-app-evosipova/ToDo/SceneDelegate.swift"; sourceTree = "<group>"; };
+		FAE916D82A4FE5BD003553D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FAE916DA2A4FE5EC003553D6 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		FAE916DC2A4FE60E003553D6 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		FAE916DE2A4FE62C003553D6 /* StatusSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSelection.swift; sourceTree = "<group>"; };
+		FAE916E02A4FE647003553D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FAE916E22A4FE661003553D6 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		FAE916E42A4FE68B003553D6 /* ListOfTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfTasksViewController.swift; sourceTree = "<group>"; };
+		FAE916E62A4FE6A4003553D6 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		FAE916E82A4FE6C8003553D6 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		FAE916EA2A4FE6E4003553D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FAE916EC2A4FE70B003553D6 /* AddTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,22 +116,22 @@
 		FAE916822A4FD9E5003553D6 /* todo */ = {
 			isa = PBXGroup;
 			children = (
-				FAE916C42A4FE152003553D6 /* AddTaskCell.swift */,
-				FAE916C02A4FE152003553D6 /* AppDelegate.swift */,
-				FAE916C52A4FE152003553D6 /* CustomTableViewCell.swift */,
-				FAE916C62A4FE152003553D6 /* FileCache.swift */,
-				FAE916C12A4FE152003553D6 /* ListOfTasksViewController.swift */,
-				FAE916C22A4FE152003553D6 /* MyViewController.swift */,
-				FAE916CB2A4FE152003553D6 /* SceneDelegate.swift */,
-				FAE916C82A4FE152003553D6 /* StatusSelection.swift */,
-				FAE916C72A4FE152003553D6 /* TaskViewController.swift */,
-				FAE916C92A4FE152003553D6 /* TodoItem.swift */,
-				FAE916C32A4FE152003553D6 /* ViewController.swift */,
 				FAE916892A4FD9E5003553D6 /* Main.storyboard */,
 				FAE9168C2A4FD9E9003553D6 /* Assets.xcassets */,
 				FAE9168E2A4FD9E9003553D6 /* LaunchScreen.storyboard */,
 				FAE916912A4FD9E9003553D6 /* Info.plist */,
 				FAE916BF2A4FE151003553D6 /* todo-Bridging-Header.h */,
+				FAE916D82A4FE5BD003553D6 /* ViewController.swift */,
+				FAE916DA2A4FE5EC003553D6 /* TodoItem.swift */,
+				FAE916DC2A4FE60E003553D6 /* TaskViewController.swift */,
+				FAE916DE2A4FE62C003553D6 /* StatusSelection.swift */,
+				FAE916E02A4FE647003553D6 /* SceneDelegate.swift */,
+				FAE916E22A4FE661003553D6 /* MyViewController.swift */,
+				FAE916E42A4FE68B003553D6 /* ListOfTasksViewController.swift */,
+				FAE916E62A4FE6A4003553D6 /* FileCache.swift */,
+				FAE916E82A4FE6C8003553D6 /* CustomTableViewCell.swift */,
+				FAE916EA2A4FE6E4003553D6 /* AppDelegate.swift */,
+				FAE916EC2A4FE70B003553D6 /* AddTaskCell.swift */,
 			);
 			path = todo;
 			sourceTree = "<group>";
@@ -285,17 +285,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAE916D52A4FE152003553D6 /* TodoItem.swift in Sources */,
-				FAE916D42A4FE152003553D6 /* StatusSelection.swift in Sources */,
-				FAE916D12A4FE152003553D6 /* CustomTableViewCell.swift in Sources */,
-				FAE916CD2A4FE152003553D6 /* ListOfTasksViewController.swift in Sources */,
-				FAE916D22A4FE152003553D6 /* FileCache.swift in Sources */,
-				FAE916CE2A4FE152003553D6 /* MyViewController.swift in Sources */,
-				FAE916D02A4FE152003553D6 /* AddTaskCell.swift in Sources */,
-				FAE916D32A4FE152003553D6 /* TaskViewController.swift in Sources */,
-				FAE916CF2A4FE152003553D6 /* ViewController.swift in Sources */,
-				FAE916CC2A4FE152003553D6 /* AppDelegate.swift in Sources */,
-				FAE916D72A4FE152003553D6 /* SceneDelegate.swift in Sources */,
+				FAE916ED2A4FE70B003553D6 /* AddTaskCell.swift in Sources */,
+				FAE916EB2A4FE6E4003553D6 /* AppDelegate.swift in Sources */,
+				FAE916D92A4FE5BD003553D6 /* ViewController.swift in Sources */,
+				FAE916E52A4FE68B003553D6 /* ListOfTasksViewController.swift in Sources */,
+				FAE916E92A4FE6C8003553D6 /* CustomTableViewCell.swift in Sources */,
+				FAE916E72A4FE6A4003553D6 /* FileCache.swift in Sources */,
+				FAE916DB2A4FE5EC003553D6 /* TodoItem.swift in Sources */,
+				FAE916E32A4FE661003553D6 /* MyViewController.swift in Sources */,
+				FAE916E12A4FE647003553D6 /* SceneDelegate.swift in Sources */,
+				FAE916DD2A4FE60E003553D6 /* TaskViewController.swift in Sources */,
+				FAE916DF2A4FE62C003553D6 /* StatusSelection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
