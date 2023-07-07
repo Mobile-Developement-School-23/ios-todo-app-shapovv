@@ -130,4 +130,62 @@ extension TodoItem {
 
         return csvComponents.joined(separator: ",")
     }
+    static func convert(from networkToDoItem: NetworkToDoItem) -> TodoItem {
+        var importance = Importance.regular
+        switch networkToDoItem.importance {
+        case "low":
+            importance = .unimportant
+        case "basic":
+            importance = .regular
+        case "important":
+            importance = .important
+        default:
+            break
+        }
+        var deadline: Date?
+        if let deadlineTimeInterval = networkToDoItem.deadline {
+            deadline = Date(timeIntervalSinceReferenceDate: Double(deadlineTimeInterval))
+        }
+        var changed: Date?
+        if let changedTimeInterval = networkToDoItem.changedAt {
+            changed = Date(timeIntervalSinceReferenceDate: Double(changedTimeInterval))
+        }
+
+        let created = Date(timeIntervalSinceReferenceDate: Double(networkToDoItem.createdAt))
+        let toDoItem = TodoItem(id: networkToDoItem.id, text: networkToDoItem.text, importance: importance, deadline: deadline, isDone: networkToDoItem.done, creationDate: created, modificationDate: changed)
+        return toDoItem
+    }
+
+    var networkItem: NetworkToDoItem {
+        var importance = ""
+        switch self.importance {
+        case .unimportant:
+            importance = "low"
+        case .regular:
+            importance = "basic"
+        case .important:
+            importance = "important"
+        }
+        var deadline: Int?
+        if let deadlineTimeInterval = self.deadline?.timeIntervalSinceReferenceDate {
+            deadline = Int(deadlineTimeInterval)
+        }
+        var changed: Int?
+        if let changedTimeInterval = self.modificationDate?.timeIntervalSinceReferenceDate {
+            changed = Int(changedTimeInterval)
+        }
+        let created = Int(creationDate.timeIntervalSinceReferenceDate)
+        let networkItem = NetworkToDoItem(
+            id: id,
+            text: text,
+            importance: importance,
+            deadline: deadline,
+            isDone: isDone,
+            creationDate: created,
+            modificationDate: changed,
+            lastUpdatedBy: "default"
+        )
+
+        return networkItem
+    }
 }
