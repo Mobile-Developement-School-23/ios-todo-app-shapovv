@@ -9,7 +9,16 @@ final class ListOfTasksViewController: UIViewController {
     private let fileCache = FileCache()
     
     var showDoneTasks = false
-    
+
+    private let networkFetcher: NetworkService = NetworkFetcher()
+
+
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -89,6 +98,12 @@ final class ListOfTasksViewController: UIViewController {
         container.font = .systemFont(ofSize: 17, weight: .semibold)
         return container
     }()
+
+    private let alert: UIAlertController = {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        return alert
+    }()
     
     private let defaultName = "Task"
     
@@ -97,6 +112,7 @@ final class ListOfTasksViewController: UIViewController {
         view.backgroundColor = UIColor(named: "backPrimary")
         navigationItem.title = "Мои дела"
         navigationController?.navigationBar.layoutMargins = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 0)
+        view.addSubview(activityIndicator)
         
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -115,6 +131,9 @@ final class ListOfTasksViewController: UIViewController {
         loadTasks()
         
         tableView.register(AddTaskCell.self, forCellReuseIdentifier: AddTaskCell.id)
+        Task{
+            try await networkFetcher.addItem(toDoItem: TodoItem(text: "hi", importance: .regular))
+        }
         
     }
     
