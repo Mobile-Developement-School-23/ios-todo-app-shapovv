@@ -7,7 +7,7 @@ protocol CreateTaskViewControllerDelegate: AnyObject {
 
 final class ListOfTasksViewController: UIViewController {
     private let fileCache = FileCache()
-    
+
     var showDoneTasks = false
 
     private let networkFetcher: NetworkService = NetworkFetcher()
@@ -19,7 +19,7 @@ final class ListOfTasksViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         return activityIndicator
     }()
-    
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.backgroundColor = UIColor(named: "backPrimary")
@@ -30,12 +30,12 @@ final class ListOfTasksViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
-    
+
     private lazy var headerView: UIView = {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 40))
         headerView.addSubview(doneLabel)
         headerView.addSubview(showDoneTasksButton)
-        
+
         NSLayoutConstraint.activate([
             doneLabel.topAnchor.constraint(equalTo: headerView.topAnchor),
             doneLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor),
@@ -46,7 +46,7 @@ final class ListOfTasksViewController: UIViewController {
         ])
         return headerView
     }()
-    
+
     private let doneLabel: UILabel = {
         let doneLabel = UILabel()
         doneLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -54,15 +54,15 @@ final class ListOfTasksViewController: UIViewController {
         doneLabel.textColor = UIColor(named: "doneLabel")
         return doneLabel
     }()
-    
+
     private lazy var showDoneTasksButton: UIButton = {
         let showDoneTasksButton = UIButton(configuration: .plain())
-        
-        
-        
+
+
+
         showDoneTasksButton.translatesAutoresizingMaskIntoConstraints = false
         showDoneTasksButton.configuration?.attributedTitle = AttributedString("Показать", attributes: attributeContainer)
-        
+
         showDoneTasksButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
             self.showDoneTasks.toggle()
@@ -74,10 +74,10 @@ final class ListOfTasksViewController: UIViewController {
             self.tableView.reloadData()
         }), for: .touchUpInside)
         return showDoneTasksButton
-        
-        
+
+
     }()
-    
+
     private lazy var addButton: UIButton = {
         let image = UIImage(named: "Add")?.withRenderingMode(.alwaysOriginal)
         let addButton = UIButton(primaryAction: UIAction(image: image, handler: { [weak self] _ in
@@ -92,7 +92,7 @@ final class ListOfTasksViewController: UIViewController {
         addButton.layer.shadowRadius = 10
         return addButton
     }()
-    
+
     private let attributeContainer: AttributeContainer = {
         var container = AttributeContainer()
         container.font = .systemFont(ofSize: 17, weight: .semibold)
@@ -104,16 +104,16 @@ final class ListOfTasksViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         return alert
     }()
-    
+
     private let defaultName = "Task"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "backPrimary")
         navigationItem.title = "Мои дела"
         navigationController?.navigationBar.layoutMargins = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 0)
         view.addSubview(activityIndicator)
-        
+
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -127,16 +127,16 @@ final class ListOfTasksViewController: UIViewController {
             addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
         ])
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.id)
-        
+
         loadTasks()
-        
+
         tableView.register(AddTaskCell.self, forCellReuseIdentifier: AddTaskCell.id)
         Task{
             try await networkFetcher.addItem(toDoItem: TodoItem(text: "hi", importance: .regular))
         }
-        
+
     }
-    
+
     private func loadTasks() {
         do {
             try fileCache.loadFromFile(filename: "TodoItems")
@@ -144,7 +144,7 @@ final class ListOfTasksViewController: UIViewController {
             debugPrint(error)
         }
     }
-    
+
     private func editTask(_ index: Int) {
         let createTaskViewController = TaskViewController()
         createTaskViewController.todoItem = fileCache.items[index]
@@ -160,7 +160,7 @@ extension ListOfTasksViewController: CreateTaskViewControllerDelegate {
         let doneTasks = fileCache.items.filter { $0.isDone }.count
         doneLabel.text = "Выполнено — \(doneTasks)"
     }
-    
+
     func saveTask(_ toDoItem: TodoItem) {
         fileCache.addItem(toDoItem)
         do {
@@ -171,7 +171,7 @@ extension ListOfTasksViewController: CreateTaskViewControllerDelegate {
         updateDoneTasks()
         tableView.reloadData()
     }
-    
+
     func deleteTask(_ id: String, _ reloadTable: Bool = true) {
         fileCache.removeItem(withId: id)
         do {
@@ -182,8 +182,8 @@ extension ListOfTasksViewController: CreateTaskViewControllerDelegate {
         updateDoneTasks()
         if reloadTable { tableView.reloadData() }
     }
-    
-    
+
+
 }
 
 extension ListOfTasksViewController: TaskCellDelegate {
@@ -201,7 +201,7 @@ extension ListOfTasksViewController: UITableViewDelegate, UITableViewDataSource 
             cell.corners = []
         }
     }
-    
+
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         if showDoneTasks {
             return fileCache.items.count + 1
@@ -209,12 +209,12 @@ extension ListOfTasksViewController: UITableViewDelegate, UITableViewDataSource 
             return fileCache.items.filter { !$0.isDone }.count + 1
         }
     }
-    
-    
+
+
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let items = showDoneTasks ? fileCache.items : fileCache.items.filter { !$0.isDone }
         if indexPath.row == items.count {
@@ -225,7 +225,7 @@ extension ListOfTasksViewController: UITableViewDelegate, UITableViewDataSource 
         cell?.delegate = self
         return cell ?? UITableViewCell()
     }
-    
+
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let items = showDoneTasks ? fileCache.items : fileCache.items.filter { !$0.isDone }
         if indexPath.row == items.count {
@@ -236,7 +236,7 @@ extension ListOfTasksViewController: UITableViewDelegate, UITableViewDataSource 
             editTask(indexPath.row)
         }
     }
-    
+
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let doneAction = UIContextualAction(style: .normal, title: nil) { [weak self] _, _, _ in
             guard let self else { return }
@@ -248,7 +248,7 @@ extension ListOfTasksViewController: UITableViewDelegate, UITableViewDataSource 
         doneAction.image = UIImage(systemName: "checkmark.circle.fill")
         return UISwipeActionsConfiguration(actions: [doneAction])
     }
-    
+
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, _ in
             guard let self else { return }
@@ -257,10 +257,10 @@ extension ListOfTasksViewController: UITableViewDelegate, UITableViewDataSource 
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         deleteAction.image = UIImage(systemName: "trash.fill")
-        
+
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    
+
     func tableView(_: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point _: CGPoint) -> UIContextMenuConfiguration? {
         let index = indexPath.row
         let identifier = "\(index)" as NSString
@@ -285,7 +285,7 @@ extension ListOfTasksViewController: UITableViewDelegate, UITableViewDataSource 
             return UIMenu(title: "", children: [inspectAction, deleteAction])
         })
     }
-    
+
     func tableView(_: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         guard let identifier = configuration.identifier as? String, let index = Int(identifier) else { return }
         animator.addCompletion {
