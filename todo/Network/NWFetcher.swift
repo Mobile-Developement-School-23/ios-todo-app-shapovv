@@ -17,11 +17,8 @@ final class NetworkFetcher: NetworkService {
     func getAllItems() async throws -> [TodoItem] {
         let url = try RequestProcessor.makeURL()
         let (data, _) = try await RequestProcessor.performRequest(with: url)
-        //        let (data, response) = try await RequestProcessor.performRequest(with: url)
-        //print(response)
         let networkListToDoItems = try decoder.decode(ListToDoItems.self, from: data)
         revision = networkListToDoItems.revision
-        // print(revision)
         return networkListToDoItems.list.map { TodoItem.convert(from: $0) }
     }
 
@@ -68,11 +65,7 @@ final class NetworkFetcher: NetworkService {
         let elementToDoItem = ElementToDoItem(element: toDoItem.networkItem)
         let url = try RequestProcessor.makeURL()
         let httpBody = try encoder.encode(elementToDoItem)
-        // print(String(data: httpBody, encoding: .utf8))
-        // print(httpBody)
         let (responseData, _) = try await RequestProcessor.performRequest(with: url, method: .post, revision: revision, httpBody: httpBody)
-        //  let (responseData, response) = try await RequestProcessor.performRequest(with: url, method: .post, revision: revision, httpBody: httpBody)
-        // print(response)
         let toDoItemNetwork = try decoder.decode(ElementToDoItem.self, from: responseData)
         print(toDoItemNetwork)
         revision = toDoItemNetwork.revision
