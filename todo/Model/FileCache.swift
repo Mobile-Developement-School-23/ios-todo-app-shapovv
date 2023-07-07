@@ -44,28 +44,28 @@ class FileCache {
         guard let jsonItems = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] else {
             throw FileCacheError.dataParsingFailed
         }
-
+        
         items = jsonItems.compactMap({TodoItem.parse(json: $0)})
     }
 
     func saveToFileAsCSV(filename: String) throws {
-        let directoryURL = getDirectoryURL(for: filename, withExtension: "csv")
-        let headers = "id,text,isDone,creationDate,importance,deadline,modificationDate\n"
-        let csvItems = items.map({ $0.csv }).joined(separator: "\n")
-        let allCSV = headers + csvItems
-        try allCSV.write(to: directoryURL, atomically: true, encoding: .utf8)
-    }
-
-    func loadFromFileAsCSV(filename: String) throws {
-        let directoryURL = getDirectoryURL(for: filename, withExtension: "csv")
-
-        guard FileManager.default.fileExists(atPath: directoryURL.path) else {
-            throw FileCacheError.fileNotFound
+            let directoryURL = getDirectoryURL(for: filename, withExtension: "csv")
+            let headers = "id,text,isDone,creationDate,importance,deadline,modificationDate\n"
+            let csvItems = items.map({ $0.csv }).joined(separator: "\n")
+            let allCSV = headers + csvItems
+            try allCSV.write(to: directoryURL, atomically: true, encoding: .utf8)
         }
 
-        let data = try String(contentsOf: directoryURL, encoding: .utf8)
-        var itemsCSV = data.components(separatedBy: "\n")
-        itemsCSV.removeFirst()
-        items = itemsCSV.compactMap { TodoItem.parse(csv: $0) }
-    }
+        func loadFromFileAsCSV(filename: String) throws {
+            let directoryURL = getDirectoryURL(for: filename, withExtension: "csv")
+
+            guard FileManager.default.fileExists(atPath: directoryURL.path) else {
+                throw FileCacheError.fileNotFound
+            }
+
+            let data = try String(contentsOf: directoryURL, encoding: .utf8)
+            var itemsCSV = data.components(separatedBy: "\n")
+            itemsCSV.removeFirst()
+            items = itemsCSV.compactMap { TodoItem.parse(csv: $0) }
+        }
 }
