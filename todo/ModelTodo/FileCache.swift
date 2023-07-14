@@ -1,4 +1,9 @@
 import Foundation
+import CoreData
+import UIKit
+
+let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
 
 enum FileCacheError: Error {
     case fileNotFound
@@ -27,11 +32,53 @@ class FileCache {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(filename + "." + ext)
     }
 
-    func saveToFile(filename: String) throws {
-        let directoryURL = getDirectoryURL(for: filename, withExtension: "json")
-        let jsonItems = items.map({$0.json})
-        let data = try JSONSerialization.data(withJSONObject: jsonItems, options: .prettyPrinted)
-        try data.write(to: directoryURL)
+//    func saveToFile(filename: String) throws {
+//        let directoryURL = getDirectoryURL(for: filename, withExtension: "json")
+//        let jsonItems = items.map({$0.json})
+//        let data = try JSONSerialization.data(withJSONObject: jsonItems, options: .prettyPrinted)
+//        try data.write(to: directoryURL)
+//    }
+    func saveToFile() throws {
+        print("Using CoreData")
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Model")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        try context.execute(deleteRequest)
+
+        for item in items {
+            let entity = NSEntityDescription.entity(forEntityName: "Model", in: context)
+            let newItem = NSManagedObject(entity: entity!, insertInto: context) as! Model
+            newItem.id = item.id
+            newItem.text = item.text
+            newItem.isDone = item.isDone
+            newItem.creationDate = item.creationDate
+            newItem.importance = item.importance.rawValue
+            newItem.deadline = item.deadline
+            newItem.modificationDate = item.modificationDate
+
+            try context.save()
+
+        }
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).first
+//        print(path)
+    }
+
+
+    func loadFromFile() throws {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Model")
+
+        do {
+            let fetchedResults = try context.fetch(fetchRequest)
+            for result in fetchedResults {
+                guard let todoItem = result as? Model else {
+                    continue
+                }
+                let item = TodoItem(id: todoItem.id!, text: todoItem.text!, importance: Importance(rawValue: todoItem.importance!)!, deadline: todoItem.deadline, isDone: todoItem.isDone, creationDate: todoItem.creationDate!, modificationDate: todoItem.modificationDate)
+                items.append(item)
+            }
+        } catch let error as NSError {
+            print("Не удалось получить данные. \(error), \(error.userInfo)")
+        }
     }
 
     func loadFromFile(filename: String) throws {

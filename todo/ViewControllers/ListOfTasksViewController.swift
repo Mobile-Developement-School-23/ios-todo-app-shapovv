@@ -139,7 +139,8 @@ final class ListOfTasksViewController: UIViewController {
 
     private func loadTasks() {
         do {
-            try fileCache.loadFromFile(filename: "TodoItems")
+//            try fileCache.loadFromFile(filename: "TodoItems")
+            try fileCache.loadFromFile()
         } catch {
             debugPrint(error)
         }
@@ -164,7 +165,8 @@ extension ListOfTasksViewController: CreateTaskViewControllerDelegate {
     func saveTask(_ toDoItem: TodoItem) {
         fileCache.addItem(toDoItem)
         do {
-            try fileCache.saveToFile(filename: "TodoItems")
+//            try fileCache.saveToFile(filename: "TodoItems")
+            try fileCache.saveToFile()
         } catch {
             debugPrint(error)
         }
@@ -175,7 +177,8 @@ extension ListOfTasksViewController: CreateTaskViewControllerDelegate {
     func deleteTask(_ id: String, _ reloadTable: Bool = true) {
         fileCache.removeItem(withId: id)
         do {
-            try fileCache.saveToFile(filename: "TodoItems")
+//            try fileCache.saveToFile(filename: "TodoItems")
+            try fileCache.saveToFile()
         } catch {
             debugPrint(error)
         }
